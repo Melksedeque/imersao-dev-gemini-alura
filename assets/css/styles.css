@@ -4,22 +4,54 @@
 /* Estiliza o corpo da página */
 body {
     font-family: "Chakra Petch", sans-serif; /* Define a fonte padrão */
-    background-color: #DDDDDD; /* Cor de fundo da página */
     display: flex; /* Usa Flexbox para layout */
     flex-direction: column; /* Alinha os itens na vertical */
     align-items: center; /* Centraliza os itens horizontalmente */
     justify-content: center; /* Centraliza os itens verticalmente */
-    height: 100vh; /* Preenche a altura total da viewport */
     margin: 0; /* Remove a margem padrão */
     padding: 0; /* Remove o padding padrão */
+    position: relative;
+}
+body::before {
+    background-image: url("/assets/images/main-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #FFFFFF;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: .1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+header {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.logo {
+    display: inline-block;
 }
 
 /* Estiliza os títulos h1 */
 h1 {
     font-size: 2.5rem; /* Tamanho da fonte */
-    color: #222831; /* Cor do texto */
+    color: #FFD700; /* Cor do texto */
     text-align: center; /* Alinha o texto ao centro */
     letter-spacing: 0.4rem; /* Espaçamento entre letras */
+    text-shadow: 2px 0 #003366,
+                -2px 0 #003366,
+                0 2px #003366,
+                0 -2px #003366,
+                1px 1px #003366,
+                -1px -1px #003366,
+                1px -1px #003366,
+                -1px 1px #003366;
 }
 
 /* Estiliza as seções da página */
@@ -33,7 +65,7 @@ section {
 /* Estiliza os inputs dentro das seções */
 section input {
     width: 30rem; /* Largura dos inputs */
-    border: none; /* Remove a borda padrão */
+    border: 1px solid #003366; /* Remove a borda padrão */
     padding: 1rem; /* Espaçamento interno */
     border-radius: 1.5rem; /* Borda arredondada */
     margin-bottom: 1rem; /* Espaçamento abaixo dos inputs */
@@ -59,6 +91,22 @@ section button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa */
 }
 
+.alerta-vazio {
+    background-color: #F8D7DA;
+    border: 1px solid #F5C6CB;
+    border-radius: .25rem;
+    color: #721C24;
+    padding: .75rem 1.5rem;
+}
+
+.alerta-sem-resultado {
+    background-color: #FFF3CD;
+    border: 1px solid #FFEEBA;
+    border-radius: .25rem;
+    color: #856404;
+    padding: .75rem 1.5rem;
+}
+
 /* Estiliza a caixa de resultados da pesquisa */
 .resultados-pesquisa {
     width: 60rem; /* Largura máxima da caixa de resultados */
@@ -71,17 +119,45 @@ section button:hover {
 
 /* Estiliza cada item de resultado */
 .item-resultado {
+    align-items: stretch;
     background: #FFFFFF; /* Cor de fundo dos itens */
     border-radius: 0.6rem; /* Borda arredondada */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
     padding: 1rem; /* Espaçamento interno */
     margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
-/* Estiliza os títulos dentro dos itens de resultado */
-.item-resultado h2 {
-    font-size: 1.5rem; /* Tamanho da fonte */
+.item-resultado .imagem {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 1 15%;
+    margin: 0;
+    padding-right: 2rem;
+    text-align: center;
+}
+.item-resultado .imagem img {
+    display: block;
+    max-width: 100%;
+}
+.item-resultado .imagem figcaption {
+    color: #003366;
+    font-size: .75rem;
+    font-style: italic;
+    margin-top: .25rem;
+}
+
+.item-resultado .conteudo {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 1 85%;
+}
+.item-resultado .conteudo h2 {
     color: #222831; /* Cor do texto */
+    font-size: 1.5rem; /* Tamanho da fonte */
+    margin: 0;
 }
 
 /* Estiliza os links dentro dos itens de resultado */
